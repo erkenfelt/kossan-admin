@@ -1,0 +1,39 @@
+<div class="dashboard">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Mina bokningar</mat-card-title>
+      <mat-card-subtitle>Du har bokat {{ (quota | async)?.bookedCount }} av {{ (quota | async)?.expectedCount }} pass</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="list-item" *ngFor="let booking of bookings | async">
+        <div class="list-item__header" [class.list-item__header--disabled]="hasPassed(booking)">
+          <div>{{ getReadableDate(booking) }}</div>
+          <button *ngIf="canCancelBooking(booking)" (click)="cancelBooking(booking)" mat-button color="accent">AVBOKA</button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Kommande tider</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="list-item" *ngFor="let date of dates | async">
+        <div class="list-item__header">
+          <div>
+            <div class="list-item__description">{{ date.description}}</div>
+            <div>{{ getReadableDate(date) }}</div>
+          </div>
+          <button (click)="bookDate(date)" *ngIf="date.availableSlots > 0 && notBooked(date.bookings)" mat-flat-button color="accent">TA DEN</button>
+          <button (click)="bookDate(date)" *ngIf="date.availableSlots > 0 && !notBooked(date.bookings)" mat-button color="accent">TA DEN</button>
+          <div *ngIf="date.availableSlots == 0" class="dashboard__full">Fullbokad</div>
+        </div>
+        <div class="list-item__content">
+          <div *ngFor="let booking of date.bookings">
+            - {{ booking.displayName }}
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

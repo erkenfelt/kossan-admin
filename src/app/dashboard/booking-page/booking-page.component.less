@@ -1,0 +1,51 @@
+@import (reference) '../../../assets/styles/colors.less';
+
+.dashboard {
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 16px;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  &__full {
+    color: @md-green-400;
+    font-weight: bold;
+  }
+}
+
+.list-item {
+  flex: 1 1 auto;
+  border-bottom: 1px solid #dcdcdc;
+  padding: 8px;
+  font-size: 16px;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  color: @md-dark-text-secondary;
+  &:last-of-type {
+    border-bottom: 0;
+  }
+
+  &__description {
+    color: @md-pink-200;
+    font-size: 14px;
+  }
+
+  &__header {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 36px;
+
+    &--disabled {
+      opacity: .5;
+    }
+  }
+
+  &__content {
+    font-size: 14px;
+  }
+}

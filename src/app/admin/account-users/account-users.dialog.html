@@ -1,0 +1,35 @@
+<ng-container *ngIf="users">
+  <mat-card-title>Användare</mat-card-title>
+  <div class="list-item" *ngFor="let user of users | async">
+    <div class="list-item__header">
+      <div>{{ user.name }}</div>
+      <div class="list-item__actions">
+        <mat-slide-toggle labelPosition="before" [checked]="user.admin" (toggleChange)="updateRole(user)">Admin</mat-slide-toggle>
+        <button mat-icon-button>
+          <i class="material-icons" (click)="deleteUser(user)">delete</i>
+        </button>
+      </div>
+    </div>
+    <div class="list-item__content">{{ user.email }}</div>
+  </div>
+  <div class="no-users" *ngIf="(users | async)?.length == 0">
+    Detta kontot har inga användare
+  </div>
+</ng-container>
+<div class="add-user">
+  <mat-card-title class="add-user__header">Skapa användare</mat-card-title>
+  <div class="add-user__form">
+    <mat-form-field class="account-name">
+      <input matInput placeholder="Namn" [(ngModel)]="name">
+      <mat-hint>För och efternamn</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="account-name">
+      <input matInput placeholder="E-post" [(ngModel)]="email">
+      <mat-hint *ngIf="!error">Används vid inloggning</mat-hint>
+      <mat-error *ngIf="error">Skriv en riktig e-post</mat-error>
+    </mat-form-field>
+    <button (click)="addUser()" mat-mini-fab color="accent" [disabled]="!name || !email">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

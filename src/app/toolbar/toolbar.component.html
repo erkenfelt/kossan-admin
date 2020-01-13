@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span class="toolbar__title" (click)="home()">
+      <div>MEDVERKA</div>
+      <div class="header__subtitle">På <span class="subtitle__coop">Föräldrakooperativet</span> Kossan</div>
+    </span>
+    <span style="flex: 1 1 auto;"></span>
+    <div class="toolbar__user-details">
+      <button *ngIf="isAdmin()" (click)="admin()"class="toolbar__admin-button" mat-button>ADMIN</button>
+      <button (click)="logout()" class="user-details__logout-button" mat-button>LOGGA UT</button>
+
+      <div (click)="logout()" [title]="user.email" class="user-details__avatar-button">
+        <div *ngIf="!avatar" class="user-details__initials">{{ initials }}</div>
+        <img *ngIf="avatar" class="user-details__avatar" src="{{ avatar }}">
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

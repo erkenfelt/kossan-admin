@@ -1,0 +1,76 @@
+@import (reference) '../../assets/styles/colors.less';
+
+.admin {
+  &-container {
+    max-width: 1100px;
+    box-sizing: border-box;
+    padding: 40px 16px;
+    margin: 0 auto;
+  }
+}
+
+.button-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-item {
+  flex: 1 1 auto;
+  border-bottom: 1px solid #dcdcdc;
+  padding: 8px;
+  font-size: 16px;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  color: @md-dark-text-secondary;
+  &:last-of-type {
+    border-bottom: 0;
+  }
+
+  &__cancel-button {
+    color: #000;
+  }
+
+  &__header {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__content {
+    font-size: 14px;
+  }
+}
+
+.header {
+  &__title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  &__content {
+    font-size: 14px;
+  }
+
+  &__account-name {
+    margin-right: 5px;
+  }
+
+  &__parental-leave-icon {
+    font-size: 16px;
+  }
+
+  &__category-icon {
+    margin-right: 5px;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+}
+
+.mat-card-actions {
+  text-align: right;
+}

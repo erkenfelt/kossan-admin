@@ -1,0 +1,109 @@
+<app-toolbar></app-toolbar>
+<div class="admin-container">
+  <div class="admin">
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Konton & användare</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-actions>
+        <button mat-button color="accent" (click)="addAccount()">
+          <div class="button-content">
+            <i class="material-icons">
+              add_circle
+            </i>&nbsp;Skapa konto
+          </div>
+        </button>
+      </mat-card-actions>
+
+      <mat-card-content>
+        <div class="list-item" *ngFor="let account of participationQuotas | async">
+          <div class="list-item__header">
+            <div class="header__title">
+              <div class="header__account-name">
+                {{ account.displayName }}
+              </div>
+              <mat-icon *ngIf="account.participation === 'limited'" [inline]="true" matTooltip="Begränsad föräldramedverkan" matTooltipPosition="above" class="header__parental-leave-icon">
+                child_care
+              </mat-icon>
+              <mat-icon *ngIf="account.participation === 'semi-full'" [inline]="true" matTooltip="Begränsad föräldramedverkan delar av terminen" matTooltipPosition="above" class="header__parental-leave-icon">
+                child_friendly
+              </mat-icon>
+              <mat-icon *ngIf="account.participation === 'no'" [inline]="true" matTooltip="Ingen föräldramedverkan" matTooltipPosition="above" class="header__parental-leave-icon">
+                beach_access
+              </mat-icon>
+            </div>
+            <div class="header__actions">
+              <button mat-icon-button (click)="accountUsers(account)">
+                <i class="material-icons">person_add</i>
+              </button>
+              <button mat-icon-button>
+                <i class="material-icons" (click)="editAccount(account)">edit</i>
+              </button>
+              <button mat-icon-button>
+                <i class="material-icons" (click)="deleteAccount(account)">delete</i>
+              </button>
+            </div>
+          </div>
+          <div class="header__content">
+           - Bokade pass {{ account.bookedCount }} / {{ account.expectedCount }}
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <div style="margin: 10px 0"></div>
+
+    <mat-card>
+
+      <mat-card-header>
+        <mat-card-title>Bokningsbara tillfällen</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-actions>
+        <button mat-button color="accent" (click)="addFixingBookableDate()">
+          <div class="button-content">
+            <i class="material-icons">
+              add_circle
+            </i>&nbsp;Skapa fixardag
+          </div>
+        </button>
+        <button mat-button color="accent" (click)="addMaintenanceBookableDate()">
+          <div class="button-content">
+            <i class="material-icons">
+              add_circle
+            </i>&nbsp;Skapa {{ getMaintenanceName() }}
+          </div>
+        </button>
+        <button mat-button color="accent" (click)="addParticipationBookableDate()">
+          <div class="button-content">
+            <i class="material-icons">
+              add_circle
+            </i>&nbsp;Skapa föräldramedverkan
+          </div>
+        </button>
+      </mat-card-actions>
+
+      <mat-card-content>
+        <div class="list-item" *ngFor="let date of dates | async">
+          <div class="list-item__header">
+            <div class="header__title">
+              <i class="material-icons">
+                {{ date.type === 'participation' ? 'directions_run' : date.type === 'fixing' ? 'build' : 'golf_course' }}
+              </i>&nbsp;{{ firebase.getReadableDate(date) }}
+            </div>
+            <div class="header__actions">
+                <!-- <button mat-icon-button>
+                  <i class="material-icons">edit</i>
+                </button> -->
+                <button mat-icon-button (click)="deleteBookableDate(date)">
+                  <i class="material-icons">delete</i>
+                </button>
+              </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

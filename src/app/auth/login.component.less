@@ -1,0 +1,65 @@
+@import (reference) '../../assets/styles/mixins.less';
+@import (reference) '../../assets/styles/colors.less';
+
+.header {
+  &__title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__subtitle {
+    font-size: 12px;
+    line-height: 12px;
+  }
+}
+.login {
+  padding-top: 50px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+
+  &__header {
+    padding: 0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: -40px;
+    margin-bottom: 20px;
+  }
+
+  &__failed-info {
+    margin: 25px 0;
+  }
+
+  &__lock {
+    .icon-size(40px);
+    margin-right: 10px;
+  }
+
+  &__password-visibility {
+    color: @md-pink-600;
+  }
+
+  &__input-container {
+    width: 270px;
+    display: block;
+  }
+
+  &__button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 60px;
+  }
+
+  &__social-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__social-icon {
+    height: 24px;
+    margin-right: 10px;
+  }
+}

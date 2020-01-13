@@ -1,0 +1,18 @@
+<mat-tab-group color="accent" backgroundColor="primary">
+    <mat-tab label="MEDVERKAN">
+      <div class="dashboard-container">
+        <app-booking-page bookingType='participation'></app-booking-page>
+      </div>
+    </mat-tab>
+    <mat-tab label="{{ getMaintenanceName() }}">
+      <div class="dashboard-container">
+        <app-booking-page bookingType="{{ getBookingType() }}"></app-booking-page>
+      </div>
+    </mat-tab>
+    <mat-tab label="FIXARDAGAR">
+      <div class="dashboard-container">
+        <app-booking-page bookingType='fixing'></app-booking-page>
+      </div>
+    </mat-tab>
+</mat-tab-group>
+

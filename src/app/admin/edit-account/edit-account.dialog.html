@@ -1,0 +1,14 @@
+<mat-card-title>ÄNDRA KONTO</mat-card-title>
+<mat-form-field class="account-name">
+  <input matInput placeholder="Kontonamn" [(ngModel)]="accountName">
+  <mat-hint>T.ex Frida och Sören</mat-hint>
+</mat-form-field>
+<mat-radio-group class="participation" [(ngModel)]="selectedParticipation">
+  <mat-radio-button class="participation__radio-button" *ngFor="let participation of participations" [value]="participation.value">
+    {{ participation.description }}
+  </mat-radio-button>
+</mat-radio-group>
+<mat-dialog-actions class="actions">
+  <button mat-button mat-dialog-close>Avbryt</button>
+  <button mat-raised-button color="accent" (click)="updateAccount()">Spara</button>
+</mat-dialog-actions>

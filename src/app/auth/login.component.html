@@ -1,0 +1,37 @@
+<div class="login">
+  <mat-card>
+    <div><!--Layout fix for margin-top --></div>
+    <mat-card class="login__header" color="primary">
+      <mat-toolbar color="primary">
+        <mat-icon class="login__lock">lock</mat-icon>
+        <div class="header__title">
+          <div>FÖRÄLDRAR</div>
+          <div class="header__subtitle">Föräldrakooperativet Kossan</div>
+        </div>
+      </mat-toolbar>
+    </mat-card>
+    <div *ngIf="failed" class="login__failed-info">
+      Det gick inte att logga in
+    </div>
+    <form (ngSubmit)="authenticate()">
+      <mat-form-field class="login__input-container">
+        <input [(ngModel)]="email" name="email" matInput placeholder="Din e-post">
+      </mat-form-field>
+      <mat-form-field class="login__input-container">
+        <input [(ngModel)]="password" name="password" matInput placeholder="Ditt lösenord" [type]="hide ? 'password' : 'text'">
+        <mat-icon class="login__password-visibility" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+      <div class="login__button-container">
+        <button *ngIf="!authenticating" type="submit" mat-button color="primary">LOGGA IN</button>
+        <mat-progress-spinner *ngIf="authenticating" class="login__progress" color="primary" mode="indeterminate" [diameter]="20"></mat-progress-spinner>
+      </div>
+    </form>
+    <div class="login__social-buttons">
+      <button (click)="signInWithGoogle()" mat-button color="primary"><img class="login__social-icon" src="/assets/images/google-g.png">Logga in med Google</button>
+      <!-- <button (click)="signInWithFacebook()" mat-button color="primary"><img class="login__social-icon" src="/assets/images/facebook.png">Logga in med Facebook</button> -->
+    </div>
+    <div class="login__request-password">
+      <button (click)="openResetPassword()" mat-button color="primary">Glömt lösenord</button>
+    </div>
+  </mat-card>
+</div>

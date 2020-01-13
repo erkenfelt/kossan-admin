@@ -1,0 +1,36 @@
+<mat-card-title>SKAPA BOKNINGSBART DATUM</mat-card-title>
+
+<mat-form-field class="formfield add-date__datepicker">
+  <input matInput [matDatepicker]="dp" (dateChange)="onDateChanged($event)" placeholder="Välj datum" disabled>
+  <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+  <mat-datepicker #dp disabled="false"></mat-datepicker>
+</mat-form-field>
+<mat-form-field class="formfield add-date__datepicker--touch">
+  <input matInput [matDatepicker]="dpTouch" placeholder="Välj datum" disabled>
+  <mat-datepicker-toggle matSuffix [for]="dpTouch"></mat-datepicker-toggle>
+  <mat-datepicker #dpTouch touchUi disabled="false"></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field class="formfield">
+  <mat-select placeholder="Underhållstyp" [(value)]="boookingType">
+    <mat-option *ngFor="let type of bookingTypes" [value]="type.bookingType">
+      {{ type.viewValue }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field class="formfield">
+  <mat-select placeholder="Antal personer" [(value)]="availableSlots">
+    <mat-option [value]="1">1</mat-option>
+    <mat-option [value]="2">2</mat-option>
+    <mat-option [value]="3">3</mat-option>
+    <mat-option [value]="4">4</mat-option>
+    <mat-option [value]="5">5</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-dialog-actions class="add-date__actions">
+  <button mat-button mat-dialog-close>Avbryt</button>
+  <button mat-raised-button color="accent" (click)="addDate()">Skapa</button>
+</mat-dialog-actions>
+

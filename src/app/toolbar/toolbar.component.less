@@ -1,0 +1,47 @@
+@import (reference) '../../assets/styles/mixins.less';
+@import (reference) '../../assets/styles/colors.less';
+
+.toolbar {
+  &__user-details {
+    display: flex;
+  }
+
+  &__title {
+    cursor: pointer;
+  }
+}
+.user-details {
+  &__logout-button {
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+  }
+  &__avatar-button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: @md-deep-orange-500;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+  }
+  &__avatar {
+    height: 43px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+}
+.header {
+  &__subtitle {
+    font-size: 12px;
+    line-height: 12px;
+  }
+}
+.subtitle {
+  &__coop {
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+  }
+}
