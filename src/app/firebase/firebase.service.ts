@@ -58,7 +58,7 @@ export class FirebaseService {
     const accountRef = this.afs.collection('accounts').doc(accountId);
     accountRef.delete();
 
-    // BOOKINGS SHOULD ALSO BE DELEDTED BUT DOES NOT WORK
+    // BOOKINGS SHOULD ALSO BE DELETED BUT DOES NOT WORK
     // const bookingsQry = this.afs
     //   .collection('bookings', ref => ref.where('accountId', '==', accountId));
     // bookingsQry.ref.get().
@@ -165,7 +165,7 @@ export class FirebaseService {
     const dateRef = this.afs.collection('dates').doc(dateId);
     dateRef.delete();
 
-    // BOOKINGS SHOULD ALSO BE DELEDTED BUT DOES NOT WORK
+    // BOOKINGS SHOULD ALSO BE DELETED BUT DOES NOT WORK
     // Delete bookings
     // const bookingsQry = await this.afs
     //   .collection('bookings', ref => ref.where('dateId', '==', dateId))
@@ -221,8 +221,6 @@ export class FirebaseService {
     const bookingRef = this.afs.collection(`bookings`).doc<Booking>(bookingId);
     return this.documentChanges(bookingRef);
   }
-
-  updateBooking() {}
 
   async deleteBooking(booking: Booking) {
     this.log(`canceled participation for ${this.getReadableDate(booking)}`);
