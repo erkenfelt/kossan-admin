@@ -77,10 +77,10 @@ export class AdminComponent implements OnInit {
   }
 
   getMaintenanceName(): string {
-    return (new Date().getMonth() > 9 || new Date().getMonth() < 4) ? 'snöskottning' : 'gräsklippning';
+    return (new Date().getMonth() > 10 || new Date().getMonth() < 3) ? 'snöskottning' : 'gräsklippning';
   }
 
   getBookingType(): BookingType {
-    return (new Date().getMonth() > 9 || new Date().getMonth() < 4) ? 'shoveling' : 'mowing';
+    return (new Date().getMonth() > 10 || new Date().getMonth() < 3) ? 'shoveling' : 'mowing';
   }
 }
