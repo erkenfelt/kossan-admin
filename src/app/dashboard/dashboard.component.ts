@@ -8,10 +8,10 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
   getMaintenanceName(): string {
-    return (new Date().getMonth() > 9 || new Date().getMonth() < 4) ? 'SNÖSKOTTNING' : 'GRÄSKLIPPNING';
+    return (new Date().getMonth() > 10 || new Date().getMonth() < 3) ? 'SNÖSKOTTNING' : 'GRÄSKLIPPNING';
   }
 
   getBookingType(): BookingType {
-    return (new Date().getMonth() > 9 || new Date().getMonth() < 4) ? 'shoveling' : 'mowing';
+    return (new Date().getMonth() > 10 || new Date().getMonth() < 3) ? 'shoveling' : 'mowing';
   }
 }
